@@ -7,10 +7,11 @@ function HighlightText({ text, input }) {
   const lowerText = text.toLowerCase();
   const words = input.toLowerCase().trim().split(/\s+/);
 
-  // 🔴 đỏ nếu 2 từ liền nhau
+  // 🔴 đỏ nếu nhiều từ liền nhau
   if (words.length >= 2) {
-    const phrase = words[0] + ' ' + words[1];
+    const phrase = words.join(' ');
     const idx = lowerText.indexOf(phrase);
+
     if (idx !== -1) {
       return (
         <Text>
@@ -54,7 +55,6 @@ function HighlightText({ text, input }) {
     </Text>
   );
 }
-
 export default function MigrationItem({ item, input }) {
   return (
     <View style={styles.card}>
